@@ -38,12 +38,29 @@
                                 </div>
 
                                 <div class="pt-0">
-                                    <form method="POST" action="{{ route('login') }}" class="my-4">
+                                    <form method="POST" action="{{ route('admin.login') }}" class="my-4">
                                         @csrf
 
-                                        @if (@session('error'))
+                                        @if (session('status'))
+                                            <div class="alert alert-success">
+                                                {{ session('status') }}
+                                            </div>
+                                        @endif
+
+                                        @if (session('error'))
                                             <div class="alert alert-danger">
-                                                {{ session('error') }}
+                                                {{-- Kita pastikan yang dicetak adalah string --}}
+                                                {{ is_array(session('error')) ? collect(session('error'))->first() : session('error') }}
+                                            </div>
+                                        @endif
+
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul class="mb-0">
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
                                             </div>
                                         @endif
 
@@ -80,7 +97,7 @@
 
                                     <div class="text-center text-muted mb-4">
                                         <p class="mb-0">Don't have an account ?<a class='text-primary ms-2 fw-medium'
-                                                href={{ route('register') }}>Sing up</a></p>
+                                                href="{{ route('register') }}">Sign up</a></p>
                                     </div>
 
                                 </div>
