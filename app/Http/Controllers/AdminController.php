@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerificationCodeMail;
@@ -73,7 +73,9 @@ class AdminController extends Controller
 
     public function AdminProfile()
     {
-        return view('admin.admin_profile');
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('admin.admin_profile', compact('profileData'));
     }
     // End Method
 
