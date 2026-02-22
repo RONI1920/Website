@@ -1,6 +1,8 @@
 @extends('admin.admin_master')
 
 @section('admin')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <div class="content">
         <div class="container-xxl">
 
@@ -58,11 +60,13 @@
 
                                                 <div class="mb-3">
                                                     <label class="form-label">Profile Photo</label>
-                                                    <input class="form-control" type="file" name="photo">
+                                                    <input class="form-control" type="file" name="photo"
+                                                        id="image">
                                                 </div>
 
                                                 <div class="mb-3">
-                                                    <img src="{{ !empty($profileData->photo) ? url('upload/user_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                                                    <img id="showImage"
+                                                        src="{{ !empty($profileData->photo) ? url('upload/user_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
                                                         class="rounded-circle avatar-xxl img-thumbnail" alt="image profile">
                                                 </div>
 
@@ -104,4 +108,21 @@
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#image').change(function(e) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result);
+                }
+                if (e.target.files && e.target.files[0]) {
+                    reader.readAsDataURL(e.target.files[0]);
+
+                }
+            })
+        });
+    </script>
 @endsection
