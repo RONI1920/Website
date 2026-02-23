@@ -79,4 +79,57 @@ class AdminController extends Controller
     }
     // End Method
 
+
+    public function ProfileStore(Request $request)
+    {
+        // Mengambil ID user yang sedang login
+        $id = Auth::user()->id;
+        $data = User::find($id);
+
+        // Update data teks (kiri: kolom di database, kanan: input dari form)
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->address = $request->address;
+
+        // Menyimpan nama file foto lama sebagai referensi
+        $oldPhotoPath = $data->photo;
+
+        // KOREKSI 1: Typo 'hashFile' menjadi 'hasFile'
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('upload/user_images'), $fileName);
+
+            // Update nama foto di database
+            $data->photo = $fileName;
+
+
+            // KOREKSI 2: Cara menghapus foto lama secara langsung
+            if ($oldPhotoPath && $oldPhotoPath !== $fileName) {
+                $this->deleteOldImage($oldPhotoPath);
+            }
+        }
+
+        //menyimpan perubahan ke database
+        $data->save();
+
+        //Mengembalikan user ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back();
+    }
+
+    // End Method
+
+    private function deleteOldImage(string $oldPhotoPath): void
+    {
+        $fullpath = public_path('upload/user_images/' . $oldPhotoPath);
+
+        // Cek apakah file ada, lalu hapus
+        if (file_exists($fullpath)) {
+            unlink($fullpath);
+        }
+    }
+
+    // End private Method
+
 }

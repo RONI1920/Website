@@ -33,7 +33,12 @@
                                         <div class="card-header">
                                             <h4 class="card-title mb-0">Personal Information</h4>
                                         </div>
-                                        <form action="">
+
+
+                                        <form action="{{ route('profile.store') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+
                                             <div class="card-body">
                                                 <div class="mb-3">
                                                     <label class="form-label">Name</label>
