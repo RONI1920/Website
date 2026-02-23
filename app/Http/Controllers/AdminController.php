@@ -114,8 +114,14 @@ class AdminController extends Controller
         //menyimpan perubahan ke database
         $data->save();
 
+        $notification = array(
+            'message' => 'Profile Update Successfuly',
+            'alert-type' => 'success'
+        );
+
+
         //Mengembalikan user ke halaman sebelumnya dengan pesan sukses
-        return redirect()->back();
+        return redirect()->back()->with($notification);
     }
 
     // End Method
