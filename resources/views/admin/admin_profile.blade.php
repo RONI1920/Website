@@ -87,23 +87,38 @@
                                             <h4 class="card-title mb-0">Change Password</h4>
                                         </div>
                                         <div class="card-body">
-                                            <div class="mb-3">
-                                                <label class="form-label">Old Password</label>
-                                                <input class="form-control" type="password" placeholder="Old Password">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">New Password</label>
-                                                <input class="form-control" type="password" placeholder="New Password">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Confirm Password</label>
-                                                <input class="form-control" type="password" placeholder="Confirm Password">
-                                            </div>
-                                            <div>
-                                                <button type="submit" class="btn btn-primary">Change Password</button>
-                                                <button type="button" class="btn btn-danger">Cancel</button>
-                                            </div>
+                                            <form action="{{ route('admin.password.update') }}" method="post">
+                                                @csrf
+                                                <div class="mb-3">
+                                                    <label class="form-label">Old Password</label>
+                                                    <input class="form-control @error('old_password') is-invalid @enderror"
+                                                        type="password" name="old_password" id="old_password"
+                                                        placeholder="Old Password">
+                                                    @error('old_password')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">New Password</label>
+                                                    <input class="form-control @error('new_password') is-invalid @enderror"
+                                                        type="password" name="new_password" id="new_password"
+                                                        placeholder="New Password">
+                                                    @error('new_password')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Confirm Password</label>
+                                                    <input class="form-control" type="password"
+                                                        name="new_password_confirmation" id="new_password_confirmation"
+                                                        placeholder="Confirm Password">
+                                                </div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-primary">Change Password</button>
+                                                </div>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
