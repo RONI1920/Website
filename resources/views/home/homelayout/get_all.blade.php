@@ -6,11 +6,11 @@
                         <div class="mt-50">
                             <ul class="tabs">
                                 <li class="active-tab">
-                                    <img src="assets/images/v1/tv.svg" alt="">
+                                    <img src="{{ asset('frontend/assets/images/v1/tv.svg') }}" alt="">
                                     <h4>Unified Dashboard</h4>
                                 </li>
                                 <li>
-                                    <img src="assets/images/v1/alerm.svg" alt="">
+                                    <img src="{{ asset('frontend/assets/images/v1/alerm.svg') }}" alt="">
                                     <h4>Real-Time Updates</h4>
                                 </li>
                             </ul>
