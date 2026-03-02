@@ -9,8 +9,10 @@
                                 <div class="lonyo-faq-header">
                                     <h4>Real-Time Expense Tracking:</h4>
                                     <div class="lonyo-active-icon">
-                                        <img class="plasicon" src="assets/images/v1/mynus.svg" alt="">
-                                        <img class="mynusicon" src="assets/images/v1/plas.svg" alt="">
+                                        <img class="plasicon" src="{{ asset('frontend/assets/images/v1/mynus.svg') }}"
+                                            alt="">
+                                        <img class="mynusicon" src="{{ asset('frontend/assets/images/v1/plas.svg') }}"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="lonyo-faq-body">
@@ -23,8 +25,10 @@
                                 <div class="lonyo-faq-header">
                                     <h4>Comprehensive Financial Overview:</h4>
                                     <div class="lonyo-active-icon">
-                                        <img class="plasicon" src="assets/images/v1/mynus.svg" alt="">
-                                        <img class="mynusicon" src="assets/images/v1/plas.svg" alt="">
+                                        <img class="plasicon" src="{{ asset('assets/images/v1/mynus.svg') }}"
+                                            alt="">
+                                        <img class="mynusicon" src="{{ asset('frontend/assets/images/v1/plas.svg') }}"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="lonyo-faq-body">
@@ -37,16 +41,20 @@
                                 <div class="lonyo-faq-header">
                                     <h4>Stress-Reducing Automation:</h4>
                                     <div class="lonyo-active-icon">
-                                        <img class="plasicon" src="assets/images/v1/mynus.svg" alt="">
-                                        <img class="mynusicon" src="assets/images/v1/plas.svg" alt="">
-                                    </div>
+                                        <img class="plasicon" src="{{ asset('frontend/assets/images/v1/mynus.svg') }}"
+                                            alt="">
+                                        <img class="mynusicon"
+                                            src="{{ asset('frontend/assets/images/v1/plas.svg" alt="">
+                                                                                </div>') }}
                                 </div>
                                 <div class="lonyo-faq-body">
-                                    <p>Automatically and syncs with bank accounts and credit cards to provide instant
-                                        updates on spending, helping users stay aware of their all daily transactions.
-                                    </p>
+                                        <p>Automatically and syncs with bank accounts and credit cards to provide
+                                            instant
+                                            updates on spending, helping users stay aware of their all daily
+                                            transactions.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
