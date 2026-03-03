@@ -40,19 +40,16 @@
                 <li>
                     <a href="#sidebarAuth" data-bs-toggle="collapse">
                         <i data-feather="users"></i>
-                        <span> Authentication </span>
+                        <span>Review Setup</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarAuth">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="auth-login.html" class="tp-link">Log In</a>
+                                <a href="auth-login.html" class="tp-link">All Review</a>
                             </li>
                             <li>
-                                <a href="auth-register.html" class="tp-link">Register</a>
-                            <li>
-                                <a href="auth-logout.html" class="tp-link">Logout</a>
-                            </li>
+                                <a href="auth-register.html" class="tp-link">Add Review</a>
                         </ul>
                     </div>
                 </li>
