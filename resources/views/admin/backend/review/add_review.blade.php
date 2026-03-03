@@ -7,9 +7,6 @@
         <div class="container-xxl">
 
             <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
-                <div class="flex-grow-1">
-                    <h4 class="fs-18 fw-semibold m-0">ADD REVIEW</h4>
-                </div>
             </div>
 
             <div class="row">
@@ -26,7 +23,7 @@
                                         </div>
 
 
-                                        <form action="{{ route('profile.store') }}" method="POST"
+                                        <form action="{{ route('store.review') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
 
@@ -47,7 +44,7 @@
 
                                                 <div class="mb-3">
                                                     <label class="form-label">User Photo</label>
-                                                    <input class="form-control" type="file" name="photo"
+                                                    <input class="form-control" type="file" name="image"
                                                         id="image">
                                                 </div>
 
