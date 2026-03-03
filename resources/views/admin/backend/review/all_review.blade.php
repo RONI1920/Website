@@ -20,7 +20,7 @@
                             <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                                 <thead>
                                     <tr>
-                                        <th>sI</th>
+                                        <th>Id</th>
                                         <th>Name</th>
                                         <th>Position</th>
                                         <th>Image</th>
@@ -32,15 +32,15 @@
 
                                     @foreach ($review as $key => $item)
                                         <tr>
-                                            <td>{{ $k + 1 }}</td>
+                                            <td>{{ $key + 1 }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->position }}</td>
                                             <td><img src="{{ asset($item->image) }}" style="width:70px ; height:40px;"></td>
-                                            <td>{{ $item->message }}</td>
+                                            <td>{{ str($item->message)->limit(50, '...') }}</td>
                                             <td>
-                                                <a href="" class="btn btn-succes btn-sm">Edit</a>
+                                                <a href="" class="btn btn-success btn-sm">Edit</a>
                                                 <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                            <td>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
