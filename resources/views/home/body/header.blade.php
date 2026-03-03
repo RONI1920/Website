@@ -53,9 +53,17 @@
                 <div class="col-auto d-flex align-items-center">
                     <div class="lonyo-header-info-wraper2">
                         <div class="lonyo-header-info-content">
-                            <ul>
-                                <li><a href="sign-in.html">Log in</a></li>
-                            </ul>
+
+                            @auth
+                                <ul>
+                                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                </ul>
+                            @else
+                                <ul>
+                                    <li><a href="{{ route('login') }}">Log in</a></li>
+                                </ul>
+                            @endauth
+
                         </div>
                         <a class="lonyo-default-btn lonyo-header-btn" href="conact-us.html">Book a demo</a>
                     </div>
