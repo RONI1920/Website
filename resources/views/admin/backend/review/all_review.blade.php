@@ -37,9 +37,13 @@
                                             <td>{{ $item->position }}</td>
                                             <td><img src="{{ asset($item->image) }}" style="width:70px ; height:40px;"></td>
                                             <td>{{ str($item->message)->limit(50, '...') }}</td>
+
+                                            {{-- edit data berdasarkan Id --}}
                                             <td>
-                                                <a href="" class="btn btn-success btn-sm">Edit</a>
-                                                <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="{{ route('edit.review', $item->id) }}"
+                                                    class="btn btn-success btn-sm">Edit</a>
+                                                <a href="{{ route('delete.review', $item->id) }}"
+                                                    class="btn btn-danger btn-sm" id="delete">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach
