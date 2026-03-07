@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
+use App\Models\Title;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -56,10 +57,17 @@ class SliderController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    // End Method
+
     // Fungsi AJAX untuk Edit Langsung di Web (Inline Editing)
     public function EditSlider(Request $request, $id)
     {
         $slider = Slider::findOrFail($id);
+
+        if ($request->has('title')) {
+            $slider->title = $request->title;
+        }
+
 
         // Mengupdate field apapun yang dikirim (title atau description)
         $slider->update($request->all());
@@ -69,4 +77,63 @@ class SliderController extends Controller
             'message' => 'Data updated successfully'
         ]);
     }
+
+    // End Method
+
+    public function Editfeatures(Request $request, $id)
+    {
+        $title = Title::findOrFail($id);
+
+        if ($request->has('features')) {
+            $title->features = $request->features;
+        }
+
+        // Mengupdate field apapun yang dikirim (title atau description)
+        $title->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data updated successfully'
+        ]);
+    }
+
+    // End Method
+
+    public function EditReviews(Request $request, $id)
+    {
+        $title = Title::findOrFail($id);
+
+        if ($request->has('reviews')) {
+            $title->reviews = $request->reviews;
+        }
+
+        // Mengupdate field apapun yang dikirim (title atau description)
+        $title->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data updated successfully'
+        ]);
+    }
+
+    // End Method
+
+    public function EditAnswers(Request $request, $id)
+    {
+        $title = Title::findOrFail($id);
+
+        if ($request->has('answers')) {
+            $title->answers = $request->answers;
+        }
+
+        // Mengupdate field apapun yang dikirim (title atau description)
+        $title->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data updated successfully'
+        ]);
+    }
+
+    // End Method
 }
