@@ -16,24 +16,19 @@ class SliderController extends Controller
         return view('admin.backend.slider.get_slider', compact('slider'));
     }
 
-    // End Method
-
+    // Update Slider Manual (Via Form)
     public function UpdateSlider(Request $request)
     {
-
         $slider_id = $request->id;
-
         $slider = Slider::findOrFail($slider_id);
 
         if ($request->file('image')) {
             $image = $request->file('image');
             $manager = new ImageManager(new Driver());
-            $name_gen = hexdec(uniqid()) . '.' .
-                $image->getClientOriginalExtension();
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             $img = $manager->read($image);
             $img->resize(306, 618)->save(public_path('upload/slider/' . $name_gen));
             $save_url = 'upload/slider/' . $name_gen;
-
 
             if ($slider->image && file_exists(public_path($slider->image))) {
                 @unlink(public_path($slider->image));
@@ -45,27 +40,33 @@ class SliderController extends Controller
                 'link' => $request->link,
                 'image' => $save_url,
             ]);
-
-            $notification = array(
-                'message' => 'Slider update With Image Successfully',
-                'alert-type' => 'success'
-            );
         } else {
             $slider->update([
                 'title' => $request->title,
                 'description' => $request->description,
                 'link' => $request->link,
             ]);
-
-            $notification = array(
-                'message' => 'Slider update With Image Successfully',
-                'alert-type' => 'success'
-            );
         }
 
+        $notification = array(
+            'message' => 'Slider updated successfully',
+            'alert-type' => 'success'
+        );
 
         return redirect()->back()->with($notification);
     }
 
-    //End Method
+    // Fungsi AJAX untuk Edit Langsung di Web (Inline Editing)
+    public function EditSlider(Request $request, $id)
+    {
+        $slider = Slider::findOrFail($id);
+
+        // Mengupdate field apapun yang dikirim (title atau description)
+        $slider->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data updated successfully'
+        ]);
+    }
 }
