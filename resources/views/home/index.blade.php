@@ -11,20 +11,10 @@
     @include('home.homelayout.features')
     <!-- end content -->
 
-    <section class="lonyo-section-padding6">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="lonyo-content-thumb" data-aos="fade-up" data-aos-duration="700">
-                        <img src="{{ asset('frontend/assets/images/v1/content-thumb.png') }}" alt="">
-                    </div>
-                </div>
 
-                @include('home.homelayout.clarifies')
+    @include('home.homelayout.clarifies')
 
-            </div>
-        </div>
-    </section>
+
     <!-- end content -->
 
     <div class="lonyo-section-padding4 position-relative">

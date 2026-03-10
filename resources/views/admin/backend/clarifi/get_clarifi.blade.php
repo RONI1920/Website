@@ -23,7 +23,7 @@
                                         </div>
 
 
-                                        <form action="{{ route('update.slider') }}" method="POST"
+                                        <form action="{{ route('update.clarifi') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
 
@@ -32,13 +32,13 @@
 
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Title Slider</label>
+                                                    <label class="form-label">Title Clarifies</label>
                                                     <input class="form-control" type="text" name="title"
-                                                        value="{{ $clarifi->description }}">
+                                                        value="{{ $clarifi->title }}">
                                                 </div>
 
                                                 <div class="mb-3">
-                                                    <label class="form-label">Description Slider</label>
+                                                    <label class="form-label">Description Clarifi</label>
                                                     <textarea name="description" class="form-control" rows="3">{{ $clarifi->description }}</textarea>
                                                 </div>
 

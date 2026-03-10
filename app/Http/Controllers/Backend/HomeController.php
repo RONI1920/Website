@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 use App\Models\Feature;
 use App\Models\Clarifi;
 
@@ -92,4 +94,47 @@ class HomeController extends Controller
         $clarifi = Clarifi::find(1);
         return view('admin.backend.clarifi.get_clarifi', compact('clarifi'));
     }
+    //End Method
+
+    public function UpdateClarifies(Request $request)
+    {
+        $clar_id = $request->id;
+        $clarifi = Clarifi::findOrFail($clar_id);
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $manager = new ImageManager(new Driver());
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $img = $manager->read($image);
+            $img->resize(302, 618)->save(public_path('upload/clarifi/' . $name_gen));
+            $save_url = 'upload/clarifi/' . $name_gen;
+
+            if ($clarifi->image && file_exists(public_path($clarifi->image))) {
+                @unlink(public_path($clarifi->image));
+            }
+
+            $clarifi->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' => $save_url,
+            ]);
+        } else {
+            $clarifi::find($clar_id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+            ]);
+        }
+
+        $notification = array(
+            'message' => 'Clarifies updated successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    // End Method
+
+
+
 }
