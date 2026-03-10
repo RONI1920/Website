@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Backend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\HomeController;
+
 
 Route::get('/', function () {
     return view('home.index');
@@ -62,5 +63,9 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/feature/{id}', 'EditFeature')->name('edit.feature');
         Route::post('update/feature', 'UpdateFeature')->name('update.feature');
         Route::get('delete/feature/{id}', 'DeleteFeature')->name('delete.feature');
+    });
+
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('get/clarifies', 'GetClarifies')->name('get.clarifies');
     });
 });
