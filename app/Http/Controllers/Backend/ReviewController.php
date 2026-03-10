@@ -109,11 +109,14 @@ class ReviewController extends Controller
 
     public function DeleteReview($id)
     {
-        $item = Review::find($id);
+        $item = Review::findOrFail($id);
         $img = $item->image;
-        unlink($img);
 
-        Review::find($id)->delete();
+        if (!empty($img) && file_exists(public_path($img))) {
+            unlink(public_path($img));
+        }
+
+        $item->delete();
 
         $notification = array(
             'message' => 'Review Delet Successfully',

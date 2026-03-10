@@ -70,6 +70,7 @@
                 </li>
 
                 <li>
+<<<<<<< Updated upstream
                     <a href="#sidebarError" data-bs-toggle="collapse">
                         <i data-feather="alert-octagon"></i>
                         <span> Features Setup</span>
@@ -82,6 +83,20 @@
                             </li>
                             <li>
                                 <a href="{{ route('get.slider') }}" class="tp-link">Add Features</a>
+=======
+                    <a href="#feature" data-bs-toggle="collapse">
+                        <i data-feather="alert-octagon"></i>
+                        <span> Feature Setup </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="feature">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.feature') }}" class="tp-link">All Feature</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('add.feature') }}" class="tp-link">Add Feature</a>
+>>>>>>> Stashed changes
                             </li>
                         </ul>
                     </div>

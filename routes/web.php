@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\SliderController;
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/edit-reviews/{id}', 'EditReviews')->name('editreviews');
         Route::post('/edit-answers/{id}', 'EditAnswers')->name('editanswers');
     });
+<<<<<<< Updated upstream
     Route::controller(HomeController::class)->group(function () {
         Route::get('all/feature', 'AllFeature')->name('all.feature');
         // Route::get('add/review', 'AddReview')->name('add.review');
@@ -61,5 +63,15 @@ Route::middleware('auth')->group(function () {
         // Route::get('edit/review/{id}', 'EditReview')->name('edit.review');
         // Route::post('update/review', 'UpdateReview')->name('update.review');
         // Route::get('delete/review/{id}', 'DeleteReview')->name('delete.review');
+=======
+
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('all/feature', 'AllFeature')->name('all.feature');
+        Route::get('add/feature', 'AddFeature')->name('add.feature');
+        Route::post('store/feature', 'StoreFeature')->name('store.feature');
+        Route::get('edit/feature/{id}', 'EditFeature')->name('edit.feature');
+        Route::post('update/feature', 'UpdateFeature')->name('update.feature');
+        Route::get('delete/feature/{id}', 'DeleteFeature')->name('delete.feature');
+>>>>>>> Stashed changes
     });
 });
