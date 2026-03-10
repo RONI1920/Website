@@ -116,7 +116,7 @@ class ReviewController extends Controller
         Review::find($id)->delete();
 
         $notification = array(
-            'message' => 'Review Delet Successfully',
+            'message' => 'Review Delete Successfully',
             'alert-type' => 'success'
         );
 
