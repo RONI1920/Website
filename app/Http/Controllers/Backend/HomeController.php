@@ -8,6 +8,7 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Models\Feature;
 use App\Models\Clarifi;
+use App\Models\GetAll;
 
 class HomeController extends Controller
 {
@@ -30,11 +31,20 @@ class HomeController extends Controller
     public function StoreFeature(Request $request)
     {
 
+        $request->validate([
+            'title' => 'required',
+            'icon' => 'required',
+            'description' => 'required',
+        ]);
+
+
         Feature::create([
             'title' => $request->title,
             'icon' => $request->icon,
             'description' => $request->description,
         ]);
+
+
 
         $notification = array(
             'message' => 'Add Feature Successfully',
@@ -127,6 +137,60 @@ class HomeController extends Controller
 
         $notification = array(
             'message' => 'Clarifies updated successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    // End Method
+
+    public function GetAll()
+    {
+        $getall = GetAll::find(1);
+        return view('admin.backend.getaLL.get_all', compact('getall'));
+    }
+    //End Method
+
+    public function UpdateGetAll(Request $request)
+    {
+        $getall_id = $request->id;
+        $getall = GetAll::findOrFail($getall_id);
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $manager = new ImageManager(new Driver());
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $img = $manager->read($image);
+            $img->resize(302, 618)->save(public_path('upload/getall/' . $name_gen));
+            $save_url = 'upload/getall/' . $name_gen;
+
+            if ($getall->image && file_exists(public_path($getall->image))) {
+                @unlink(public_path($getall->image));
+            }
+
+            $getall->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'feature_title1' => $request->feature_title1,
+                'feature_title2' => $request->feature_title2,
+                'feature_detail1' => $request->feature_detail1,
+                'feature_detail2' => $request->feature_detail2,
+                'image' => $save_url,
+            ]);
+        } else {
+            $getall::find($getall_id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'feature_title1' => $request->feature_title1,
+                'feature_title2' => $request->feature_title2,
+                'feature_detail1' => $request->feature_detail1,
+                'feature_detail2' => $request->feature_detail2,
+            ]);
+        }
+
+        $notification = array(
+            'message' => 'Feature Get All updated successfully',
             'alert-type' => 'success'
         );
 
