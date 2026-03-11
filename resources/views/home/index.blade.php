@@ -17,21 +17,9 @@
 
     <!-- end content -->
 
-    <div class="lonyo-section-padding4 position-relative">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 order-lg-2">
-                    <div class="lonyo-content-thumb" data-aos="fade-up" data-aos-duration="700">
-                        <img src="{{ asset('frontend/assets/images/v1/content-thumb2.png') }}" alt="">
-                    </div>
-                </div>
+    @include('home.homelayout.get_all')
 
-                @include('home.homelayout.get_all')
 
-            </div>
-        </div>
-        <div class="lonyo-content-shape2"></div>
-    </div>
     <div class="lonyo-content-shape3">
         <img src="{{ asset('frontend/assets/images/shape/shape2.svg') }}" alt="">
     </div>

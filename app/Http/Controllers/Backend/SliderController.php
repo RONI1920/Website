@@ -17,6 +17,9 @@ class SliderController extends Controller
         return view('admin.backend.slider.get_slider', compact('slider'));
     }
 
+    // End Method
+
+
     // Update Slider Manual (Via Form)
     public function UpdateSlider(Request $request)
     {
