@@ -9,6 +9,7 @@ use Intervention\Image\Drivers\Gd\Driver;
 use App\Models\Feature;
 use App\Models\Clarifi;
 use App\Models\GetAll;
+use App\Models\Usability;
 
 class HomeController extends Controller
 {
@@ -191,6 +192,56 @@ class HomeController extends Controller
 
         $notification = array(
             'message' => 'Feature Get All updated successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    // End Method
+
+    public function GetUsability()
+    {
+        $usability  = Usability::find(1);
+        return view('admin.backend.usability.get_usability', compact('usability'));
+    }
+    //End Method
+
+    public function UpdateUsability(Request $request)
+    {
+        $usability_id = $request->id;
+        $usability = Usability::findOrFail($usability_id);
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $manager = new ImageManager(new Driver());
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $img = $manager->read($image);
+            $img->resize(560, 400)->save(public_path('upload/usability/' . $name_gen));
+            $save_url = 'upload/usability/' . $name_gen;
+
+            if ($usability->image && file_exists(public_path($usability->image))) {
+                @unlink(public_path($usability->image));
+            }
+
+            $usability->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'youtube' => $request->youtube,
+                'link' => $request->link,
+                'image' => $save_url,
+            ]);
+        } else {
+            $usability::find($usability_id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'youtube' => $request->youtube,
+                'link' => $request->link,
+            ]);
+        }
+
+        $notification = array(
+            'message' => 'Usability updated successfully',
             'alert-type' => 'success'
         );
 

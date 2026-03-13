@@ -38,12 +38,12 @@
                 <li class="menu-title">Pages</li>
 
                 <li>
-                    <a href="#sidebarAuth" data-bs-toggle="collapse">
+                    <a href="#sidebarReview" data-bs-toggle="collapse">
                         <i data-feather="users"></i>
                         <span>Review Setup</span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarAuth">
+                    <div class="collapse" id="sidebarReview">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('all.review') }}" class="tp-link">All Review</a>
@@ -55,12 +55,12 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarError" data-bs-toggle="collapse">
+                    <a href="#sidebarSlider" data-bs-toggle="collapse">
                         <i data-feather="alert-octagon"></i>
                         <span> Slider Pages </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarError">
+                    <div class="collapse" id="sidebarSlider">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('get.slider') }}" class="tp-link">Get Slider</a>
@@ -70,12 +70,12 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarError" data-bs-toggle="collapse">
+                    <a href="#sidebarFeature" data-bs-toggle="collapse">
                         <i data-feather="alert-octagon"></i>
                         <span> Feature Setup </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarError">
+                    <div class="collapse" id="sidebarFeature">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('all.feature') }}" class="tp-link">All Features</a>
@@ -89,12 +89,12 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarError" data-bs-toggle="collapse">
+                    <a href="#sidebarClarifies " data-bs-toggle="collapse">
                         <i data-feather="alert-octagon"></i>
                         <span> Clarifies Setup </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarError">
+                    <div class="collapse" id="sidebarClarifies ">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('get.clarifies') }}" class="tp-link">Get Clarifies </a>
@@ -105,12 +105,12 @@
 
 
                 <li>
-                    <a href="#sidebarError" data-bs-toggle="collapse">
+                    <a href="#sidebarGetAll" data-bs-toggle="collapse">
                         <i data-feather="alert-octagon"></i>
                         <span> Get All Setup </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarError">
+                    <div class="collapse" id="sidebarGetAll">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('get.getall') }}" class="tp-link">Get All </a>
@@ -118,6 +118,22 @@
                         </ul>
                     </div>
                 </li>
+
+                <li>
+                    <a href="#sidebarUsability" data-bs-toggle="collapse">
+                        <i data-feather="alert-octagon"></i>
+                        <span> Usability Setup </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarUsability">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('get.usability') }}" class="tp-link">Get Usability </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
 
                 <li class="menu-title mt-2">General</li>
