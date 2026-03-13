@@ -74,4 +74,9 @@ Route::middleware('auth')->group(function () {
         Route::get('get/getall', 'GetAll')->name('get.getall');
         Route::post('update/getall', 'UpdateGetAll')->name('update.getall');
     });
+
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('get/usability', 'GetUsability')->name('get.usability');
+        Route::post('update/usability', 'UpdateUsability')->name('update.usability');
+    });
 });
