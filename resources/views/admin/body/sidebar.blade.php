@@ -135,6 +135,25 @@
                 </li>
 
 
+                <li>
+                    <a href="#Connect" data-bs-toggle="collapse">
+                        <i data-feather="alert-octagon"></i>
+                        <span> Connect Setup </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="Connect">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.connect') }}" class="tp-link">All Connect </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('add.connect') }}" class="tp-link">Add Connect </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
 
                 <li class="menu-title mt-2">General</li>
 
