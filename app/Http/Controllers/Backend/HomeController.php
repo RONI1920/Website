@@ -10,6 +10,7 @@ use App\Models\Feature;
 use App\Models\Clarifi;
 use App\Models\GetAll;
 use App\Models\Usability;
+use App\Models\Connect;
 
 class HomeController extends Controller
 {
@@ -250,6 +251,81 @@ class HomeController extends Controller
 
     // End Method
 
+    public function AllConnect()
+    {
+        $connect = Connect::latest()->get();
 
+        return view('admin.backend.connect.all_connect', compact('connect'));
+    }
+
+    //End Method
+
+    public function AddConnect()
+    {
+
+        return view('admin.backend.connect.add_connect');
+    }
+    // End Method
+
+    public function StoreConnect(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+        Connect::create([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+        $notification = array(
+            'message' => 'Add Connect Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.connect')->with($notification);
+    }
+
+    //End Method
+
+    public function EditConnect($id)
+    {
+        $connect = Connect::find($id);
+        return view('admin.backend.connect.edit_connect', compact('connect'));
+    }
+
+    //End Method
+
+
+    public function UpdateConnect(Request $request)
+    {
+
+        $con_id = $request->id;
+        Connect::find($con_id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        $notification = array(
+            'message' => 'Update Connect Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.connect')->with($notification);
+    }
+
+    //End Method
+
+    public function DeleteConnect($id)
+    {
+        connect::find($id)->delete();
+
+        $notification = array(
+            'message' => 'Delete Connect Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    //End Method
 
 }
