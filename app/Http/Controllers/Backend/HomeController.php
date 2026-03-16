@@ -328,4 +328,15 @@ class HomeController extends Controller
 
     //End Method
 
+
+    public function UpdateConnectTable(Request $request, $id)
+    {
+        $connect = Connect::findOrFail($id);
+        $connect->update($request->only(['title', 'description']));
+
+        return response()->json(['success' => true, 'message' => 'Update Succesfully']);
+    }
+
+    //End Method 
+
 }
