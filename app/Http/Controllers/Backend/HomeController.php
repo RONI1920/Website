@@ -9,6 +9,7 @@ use Intervention\Image\Drivers\Gd\Driver;
 use App\Models\Feature;
 use App\Models\Clarifi;
 use App\Models\GetAll;
+use App\Models\Faq;
 use App\Models\Usability;
 use App\Models\Connect;
 
@@ -339,4 +340,80 @@ class HomeController extends Controller
 
     //End Method 
 
+    public function AllFaq()
+    {
+        $faq = Faq::latest()->get();
+
+        return view('admin.backend.faq.all_faq', compact('faq'));
+    }
+
+    //End Method
+
+    public function AddFaq()
+    {
+
+        return view('admin.backend.faq.add_faq');
+    }
+    // End Method
+
+    public function StoreFaq(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+        Faq::create([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+        $notification = array(
+            'message' => 'Add FAQ Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.faq')->with($notification);
+    }
+
+    //End Method
+
+    public function EditFaq($id)
+    {
+        $faq = Faq::find($id);
+        return view('admin.backend.faq.edit_faq', compact('faq'));
+    }
+
+    //End Method
+
+
+    public function UpdateFaq(Request $request)
+    {
+
+        $faq_id = $request->id;
+        faq::find($faq_id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        $notification = array(
+            'message' => 'Update FAQ Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.faq')->with($notification);
+    }
+
+    //End Method
+
+    public function DeleteFaq($id)
+    {
+        faq::find($id)->delete();
+
+        $notification = array(
+            'message' => 'Delete FAQ Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    //End Method
 }

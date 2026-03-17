@@ -103,6 +103,7 @@
                     </div>
                 </li>
 
+                {{-- Get All Setup --}}
 
                 <li>
                     <a href="#sidebarGetAll" data-bs-toggle="collapse">
@@ -119,6 +120,8 @@
                     </div>
                 </li>
 
+                {{-- Usability Setup --}}
+
                 <li>
                     <a href="#sidebarUsability" data-bs-toggle="collapse">
                         <i data-feather="alert-octagon"></i>
@@ -134,6 +137,7 @@
                     </div>
                 </li>
 
+                {{-- Connect Setup --}}
 
                 <li>
                     <a href="#Connect" data-bs-toggle="collapse">
@@ -148,6 +152,26 @@
                             </li>
                             <li>
                                 <a href="{{ route('add.connect') }}" class="tp-link">Add Connect </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- Faq Setup --}}
+
+                <li>
+                    <a href="#Faq" data-bs-toggle="collapse">
+                        <i data-feather="alert-octagon"></i>
+                        <span> Faq Setup </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="Faq">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.faq') }}" class="tp-link">All FAQ </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('add.faq') }}" class="tp-link">Add FAQ </a>
                             </li>
                         </ul>
                     </div>
