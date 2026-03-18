@@ -98,4 +98,9 @@ Route::middleware('auth')->group(function () {
         Route::post('update/faq', 'UpdateFaq')->name('update.faq');
         Route::get('delete/faq/{id}', 'DeleteFaq')->name('delete.faq');
     });
+
+    Route::controller(HomeController::class)->group(function () {
+        Route::post('/update-app/{id}', 'UpdateApp');
+        Route::post('/upload-app-image/{id}', 'UploadAppImage');
+    });
 });
