@@ -10,6 +10,7 @@ use App\Models\Feature;
 use App\Models\Clarifi;
 use App\Models\GetAll;
 use App\Models\Faq;
+use App\Models\Apps;
 use App\Models\Usability;
 use App\Models\Connect;
 
@@ -416,4 +417,56 @@ class HomeController extends Controller
     }
 
     //End Method
+
+
+    public function UpdateApp(Request $request, $id)
+    {
+        $app = Apps::findOrFail($id);
+        $app->update($request->only(['title', 'description']));
+
+        return response()->json(['success' => true, 'message' => 'Update Succesfully']);
+    }
+
+    // End Method
+
+    public function UploadAppImage(Request $request, $id)
+    {
+        $app = Apps::findOrFail($id);
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $manager = new ImageManager(new Driver());
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $img = $manager->read($image);
+
+            // --- TAMBAHKAN KODE INI ---
+            // Cek apakah folder upload/app sudah ada, jika belum buatkan foldernya
+            // $directory = public_path('upload/app');
+            // if (!file_exists($directory)) {
+            //     mkdir($directory, 0777, true);
+            // }
+            // -------------------------
+
+            $img->resize(306, 481)->save(public_path('upload/app/' . $name_gen));
+            $save_url = 'upload/app/' . $name_gen;
+
+            // Hapus gambar lama jika ada
+            if (file_exists(public_path($app->image))) {
+                @unlink(public_path($app->image));
+            }
+
+            // Update database
+            $app->update([
+                'image' => $save_url,
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'image_url' => asset($save_url),
+                'message' => 'image Upload successfully'
+            ]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Image Upload Failed: File tidak terdeteksi'], 400);
+    }
 }
