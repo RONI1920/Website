@@ -177,7 +177,23 @@
                     </div>
                 </li>
 
-
+                <li>
+                    <a href="#OurTeam" data-bs-toggle="collapse">
+                        <i data-feather="alert-octagon"></i>
+                        <span> Our Team Setup </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="OurTeam">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.team') }}" class="tp-link">All Our Team </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('add.team') }}" class="tp-link">Add Our Team </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
                 <li class="menu-title mt-2">General</li>
 
