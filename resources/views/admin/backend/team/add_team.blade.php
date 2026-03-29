@@ -23,21 +23,21 @@
                                         </div>
 
 
-                                        <form action="{{ route('store.team') }}" method="POST"
+                                        <form id="myForm" action="{{ route('store.team') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
 
                                             <div class="card-body">
-                                                <div class="mb-3">
+                                                <div class=" form-group mb-3">
                                                     <label class="form-label">Name</label>
                                                     <input class="form-control" type="text" name="name">
                                                 </div>
-                                                <div class="mb-3">
+                                                <div class="form-group  mb-3">
                                                     <label class="form-label">Position</label>
                                                     <input class="form-control" type="text" name="position">
                                                 </div>
 
-                                                <div class="mb-3">
+                                                <div class="form-group mb-3">
                                                     <label class="form-label">Our Team Image</label>
                                                     <input class="form-control" type="file" name="image"
                                                         id="image">
@@ -60,6 +60,53 @@
                 </div>
             </div>
         </div>
+
+
+
+        {{-- validate massege --}}
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#myForm').validate({
+                    rules: {
+                        name: {
+                            required: true,
+                        },
+                        position: {
+                            required: true,
+                        },
+                        image: {
+                            required: true,
+                        },
+
+                    },
+                    messages: {
+                        name: {
+                            required: 'Please Enter Name',
+                        },
+                        position: {
+                            required: 'Please Field is Required',
+                        },
+                        image: {
+                            required: 'Please Upload Image',
+                        },
+
+
+                    },
+                    errorElement: 'span',
+                    errorPlacement: function(error, element) {
+                        error.addClass('invalid-feedback');
+                        element.closest('.form-group').append(error);
+                    },
+                    highlight: function(element, errorClass, validClass) {
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight: function(element, errorClass, validClass) {
+                        $(element).removeClass('is-invalid');
+                    },
+                });
+            });
+        </script>
+
 
 
         <script type="text/javascript">
