@@ -1,84 +1,86 @@
-    <header class="site-header lonyo-header-section light-bg" id="sticky-menu">
-        <div class="container">
-            <div class="row gx-3 align-items-center justify-content-between">
-                <div class="col-8 col-sm-auto ">
-                    <div class="header-logo1 ">
-                        <a href=""{{ url('/') }}"">
-                            <img src="{{ asset('frontend/assets/images/logo/logo-dark.svg') }}" alt="logo">
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="lonyo-main-menu-item">
-                        <nav class="main-menu menu-style1 d-none d-lg-block menu-left">
-                            <ul>
-                                <li>
-                                    <a href="{{ url('/') }}">Home</a>
-                                </li>
+<header class="site-header lonyo-header-section light-bg" id="sticky-menu">
+    <div class="container-xxl">
+        <div class="row gx-3 align-items-center justify-content-between">
 
-                                <li class="menu-item-has-children">
-                                    <a href="#">About Us</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="index.html">
-                                                Company Profile
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('our.team') }}">
-                                                Team
-                                            </a>
-                                        </li>
-                                    </ul>
-                                <li>
-                                    <a href="contact-us.html">Our Service</a>
-                                </li>
-
-                                <li>
-                                    <a href="contact-us.html">Portfolio</a>
-                                </li>
-
-                                <li>
-                                    <a href="contact-us.html">Blog</a>
-                                </li>
-                                </li>
-
-                                <li>
-                                    <a href="contact-us.html">Contact</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-auto d-flex align-items-center">
-                    <div class="lonyo-header-info-wraper2">
-                        <div class="lonyo-header-info-content">
-
-                            @auth
-                                <ul>
-                                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                </ul>
-                            @else
-                                <ul>
-                                    <li><a href="{{ route('login') }}">Log in</a></li>
-                                </ul>
-                            @endauth
-
-                        </div>
-                        <a class="lonyo-default-btn lonyo-header-btn" href="conact-us.html">Book a demo</a>
-                    </div>
-                    <div class="lonyo-header-menu">
-                        <nav class="navbar site-navbar justify-content-between">
-                            <!-- Brand Logo-->
-                            <!-- mobile menu trigger -->
-                            <button class="lonyo-menu-toggle d-inline-block d-lg-none">
-                                <span></span>
-                            </button>
-                            <!--/.Mobile Menu Hamburger Ends-->
-                        </nav>
-                    </div>
+            <!-- Kolom Logo -->
+            <div class="col-8 col-sm-auto ">
+                <div class="header-logo1 ">
+                    <a href="{{ url('/') }}"> <!-- Tanda kutip ganda sudah diperbaiki -->
+                        <img src="{{ asset('frontend/assets/images/logo/logo-dark.svg') }}" alt="logo">
+                    </a>
                 </div>
             </div>
-        </div>
 
-    </header>
+            <!-- Kolom Navigasi -->
+            <div class="col">
+                <div class="lonyo-main-menu-item">
+                    <nav class="main-menu menu-style1 d-none d-lg-block menu-left">
+                        <ul>
+                            <li>
+                                <a href="{{ url('/') }}">Home</a>
+                            </li>
+
+                            <li class="menu-item-has-children">
+                                <a href="#">About Us</a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="index.html">Company Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('our.team') }}">Team</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="contact-us.html">Our Service</a>
+                            </li>
+
+                            <li>
+                                <a href="contact-us.html">Portfolio</a>
+                            </li>
+
+                            <li>
+                                <a href="contact-us.html">Blog</a>
+                            </li>
+
+                            <li>
+                                <a href="contact-us.html">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Kolom Tombol & Auth -->
+            <div class="col-auto d-flex align-items-center">
+                <div class="lonyo-header-info-wraper2">
+                    <div class="lonyo-header-info-content">
+                        @auth
+                            <ul>
+                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                            </ul>
+                        @else
+                            <ul>
+                                <li><a href="{{ route('login') }}">Log in</a></li>
+                            </ul>
+                        @endauth
+                    </div>
+                    <a class="lonyo-default-btn lonyo-header-btn" href="contact-us.html">Book a demo</a>
+                    <!-- Typo conact-us.html diperbaiki -->
+                </div>
+
+                <div class="lonyo-header-menu">
+                    <nav class="navbar site-navbar justify-content-between">
+                        <!-- mobile menu trigger -->
+                        <button class="lonyo-menu-toggle d-inline-block d-lg-none">
+                            <span></span>
+                        </button>
+                        <!--/.Mobile Menu Hamburger Ends-->
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
