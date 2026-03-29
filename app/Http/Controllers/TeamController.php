@@ -74,8 +74,8 @@ class TeamController extends Controller
             $name_gen = hexdec(uniqid()) . '.' .
                 $image->getClientOriginalExtension();
             $img = $manager->read($image);
-            $img->resize(60, 60)->save(public_path('upload/review/' . $name_gen));
-            $save_url = 'upload/review/' . $name_gen;
+            $img->resize(60, 60)->save(public_path('upload/ourteam/' . $name_gen));
+            $save_url = 'upload/ourteam/' . $name_gen;
 
             Team::create([
                 'name' => $request->name,
@@ -149,10 +149,14 @@ class TeamController extends Controller
 
     public function DeleteTeam($id)
     {
+        $item = Team::find($id);
+        $img = $item->image;
+        unlink($img);
+
         Team::find($id)->delete();
 
         $notification = array(
-            'message' => 'Delete Our Team Successfully',
+            'message' => 'Our Team Delete Successfully',
             'alert-type' => 'success'
         );
 
