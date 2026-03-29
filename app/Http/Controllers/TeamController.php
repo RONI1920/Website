@@ -21,7 +21,7 @@ class TeamController extends Controller
             $manager = new ImageManager(new Driver());
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             $img = $manager->read($image);
-            $img->resize(301, 400)->save(public_path('upload/ourteam/' . $name_gen));
+            $img->resize(306, 400)->save(public_path('upload/ourteam/' . $name_gen));
             $save_url = 'upload/ourteam/' . $name_gen;
 
             if ($team->image && file_exists(public_path($team->image))) {
@@ -74,7 +74,7 @@ class TeamController extends Controller
             $name_gen = hexdec(uniqid()) . '.' .
                 $image->getClientOriginalExtension();
             $img = $manager->read($image);
-            $img->resize(60, 60)->save(public_path('upload/ourteam/' . $name_gen));
+            $img->resize(306, 400)->save(public_path('upload/ourteam/' . $name_gen));
             $save_url = 'upload/ourteam/' . $name_gen;
 
             Team::create([
@@ -117,7 +117,7 @@ class TeamController extends Controller
             $img = $manager->read($image);
 
             // Note: Saya ganti path-nya jadi 'upload/ourteam/' agar rapi
-            $img->resize(60, 60)->save(public_path('upload/ourteam/' . $name_gen));
+            $img->resize(306, 400)->save(public_path('upload/ourteam/' . $name_gen));
             $save_url = 'upload/ourteam/' . $name_gen;
 
             // Hapus gambar lama jika ada
