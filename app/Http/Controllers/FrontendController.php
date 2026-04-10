@@ -12,4 +12,11 @@ class FrontendController extends Controller
     }
 
     // End Method
+
+    public function AboutUs()
+    {
+        return view('home.team.about_us');
+    }
+
+    // End Method
 }
