@@ -114,6 +114,10 @@ Route::middleware('auth')->group(function () {
         Route::post('update/team', 'UpdateTeam')->name('update.team');
         Route::get('delete/team/{id}', 'DeleteTeam')->name('delete.team');
     });
+
+    Route::controller(FrontendController::class)->group(function () {
+        Route::get('get/about', 'GetAboutUs')->name('get.aboutus');
+    });
 });
 
 // Out May Middleware

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\About;
+use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class FrontendController extends Controller
 {
@@ -19,4 +22,10 @@ class FrontendController extends Controller
     }
 
     // End Method
+
+    public function GetAboutUs()
+    {
+        $about = About::find(1);
+        return view('admin.backend.about.get_about', compact('about'));
+    }
 }
