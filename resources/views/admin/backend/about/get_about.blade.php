@@ -23,7 +23,7 @@
                                         </div>
 
 
-                                        <form action="{{ route('update.clarifi') }}" method="POST"
+                                        <form id="aboutForm" action="{{ route('update.about') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
 
@@ -39,7 +39,10 @@
 
                                                 <div class="mb-3">
                                                     <label class="form-label">Description</label>
-                                                    <textarea name="description" class="form-control" rows="3">{{ $about->description }}</textarea>
+                                                    <textarea name="description" id="description_input" style="display:none"></textarea>
+                                                    <div id="quill-editor" style="height: 200px;">
+                                                        {!! $about->description !!}
+                                                    </div>
                                                 </div>
 
                                                 <div class="mb-3">
@@ -65,21 +68,40 @@
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#image').change(function(e) {
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        $('#showImage').attr('src', e.target.result);
-                    }
-                    if (e.target.files && e.target.files[0]) {
-                        reader.readAsDataURL(e.target.files[0]);
-
-                    }
-                })
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Init Quill
+            var quill = new Quill('#quill-editor', {
+                theme: 'snow'
             });
-        </script>
-    @endsection
+
+            // Submit Logic
+            $('#aboutForm').on('submit', function() {
+                var description = quill.root.innerHTML;
+                if (description === '<p><br></p>') {
+                    description = '';
+                }
+                $('#description_input').val(description); // Pastikan ID ini ada di HTML tadi
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#image').change(function(e) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result);
+                }
+                if (e.target.files && e.target.files[0]) {
+                    reader.readAsDataURL(e.target.files[0]);
+
+                }
+            })
+        });
+    </script>
+@endsection
