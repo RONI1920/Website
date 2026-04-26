@@ -32,8 +32,16 @@
                                 </ul>
                             </li>
 
-                            <li>
-                                <a href="contact-us.html">Our Service</a>
+                            <li class="menu-item-has-children">
+                                <a href="{{ route('service.our') }}">Our Service</a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="{{ route('service.our') }}">Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('service.detail') }}">Service Detail</a>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li>

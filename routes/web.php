@@ -125,3 +125,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/team', [FrontendController::class, 'OurTeam'])->name('our.team');
 Route::get('/about', [FrontendController::class, 'AboutUs'])->name('about.us');
+
+
+Route::get('/service', [FrontendController::class, 'OurService'])->name('service.our');
+Route::get('/service/detail', [FrontendController::class, 'ServiceDetail'])->name('service.detail');

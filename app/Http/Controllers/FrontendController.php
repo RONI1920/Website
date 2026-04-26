@@ -69,4 +69,21 @@ class FrontendController extends Controller
     }
 
     // End Method
+
+
+    public function OurService()
+    {
+        return view('home.service.service_our');
+    }
+
+    // End Method
+
+    public function ServiceDetail()
+    {
+        return view('home.service.service_detail');
+    }
+
+    // End Method
+
+
 }
