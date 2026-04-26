@@ -152,7 +152,7 @@
                 <div class="col-lg-5">
                     <div class="lonyo-about-us-feature-wrap one" data-aos="fade-up" data-aos-duration="500">
                         <div class="lonyo-about-us-feature-icon">
-                            <img src="assets/images/about-us/icon1.svg" alt="">
+                            <img src="{{ asset('frontend/assets/images/about-us/icon1.svg') }}" alt="">
                         </div>
                         <div class="lonyo-about-us-feature-content">
                             <h4>User-Centric Innovation</h4>
@@ -162,17 +162,17 @@
                     </div>
                     <div class="lonyo-about-us-feature-wrap two" data-aos="fade-up" data-aos-duration="700">
                         <div class="lonyo-about-us-feature-icon">
-                            <img src="assets/images/about-us/icon2.svg" alt="">
+                            <img src="{{ asset('frontend/assets/images/about-us/icon2.svg') }}" alt="">
                         </div>
                         <div class="lonyo-about-us-feature-content">
                             <h4>Transparency</h4>
-                            <p>We believe in clear communication and full transparency in all our practices, providing
-                                users with accurate financial insights.</p>
+                            <p>We believe in clear communication and full transparency in all our practices, providing users
+                                with accurate financial insights.</p>
                         </div>
                     </div>
                     <div class="lonyo-about-us-feature-wrap three" data-aos="fade-up" data-aos-duration="900">
                         <div class="lonyo-about-us-feature-icon">
-                            <img src="assets/images/about-us/icon3.svg" alt="">
+                            <img src="{{ asset('frontend/assets/images/about-us/icon3.svg') }}" alt="">
                         </div>
                         <div class="lonyo-about-us-feature-content">
                             <h4>Integrity & Trust</h4>
@@ -182,7 +182,7 @@
                     </div>
                     <div class="lonyo-about-us-feature-wrap mb-0 four" data-aos="fade-up" data-aos-duration="1100">
                         <div class="lonyo-about-us-feature-icon">
-                            <img src="assets/images/about-us/icon4.svg" alt="">
+                            <img src="{{ asset('frontend/assets/images/about-us/icon4.svg') }}" alt="">
                         </div>
                         <div class="lonyo-about-us-feature-content">
                             <h4>Security You Can Trust</h4>
@@ -195,6 +195,8 @@
         </div>
         <div class="lonyo-feature-shape shape2"></div>
     </section>
+
+
     <!-- end feature -->
 
     <div class="lonyo-section-padding10 team-section">
