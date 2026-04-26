@@ -24,7 +24,7 @@
                                 <a href="{{ route('about.us') }}">About Us</a>
                                 <ul class="sub-menu">
                                     <li>
-                                        <a href="index.html">Company Profile</a>
+                                        <a href="{{ url('/') }}">Company Profile</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('our.team') }}">Team</a>
