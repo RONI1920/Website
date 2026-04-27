@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\TeamController;
@@ -118,6 +119,11 @@ Route::middleware('auth')->group(function () {
     Route::controller(FrontendController::class)->group(function () {
         Route::get('get/about', 'GetAboutUs')->name('get.aboutus');
         Route::post('update/about', 'UpdateAboutUs')->name('update.about');
+    });
+
+    Route::controller(BlogController::class)->group(function () {
+        Route::get('blog/category', 'GetBlogCategory')->name('get.blog.category');
+        Route::get('store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
     });
 });
 
